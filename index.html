@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Haotong Xie — Homepage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --text: #1f2328;
+    --text-soft: #424a53;
+    --muted: #6e7781;
+    --rule: #e6e8eb;
+    --link: #0969da;
+    --link-hover: #0550ae;
+    --accent: #cf222e;
+    --code-bg: #f6f8fa;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--link); text-decoration: none; transition: color 0.15s; }
+  a:hover { color: var(--link-hover); text-decoration: underline; }
+
+  nav {
+    position: sticky;
+    top: 0;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--rule);
+    z-index: 100;
+    padding: 18px 0;
+  }
+  .nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 48px;
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    overflow-x: auto;
+  }
+  .nav-inner a {
+    color: var(--text-soft);
+    font-size: 17px;
+    font-weight: 400;
+    white-space: nowrap;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+  .nav-inner a:hover { color: var(--text); text-decoration: none; border-bottom-color: var(--text); }
+  .nav-inner a.active { color: var(--text); font-weight: 500; }
+
+  .layout {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 48px 48px 80px;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .sidebar { position: sticky; top: 100px; }
+
+  .avatar {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 24px;
+    background: linear-gradient(135deg, #87ceeb 0%, #b0e0e6 50%, #f0f8ff 100%);
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 1px var(--rule), 0 8px 24px rgba(0,0,0,0.08);
+  }
+  .avatar svg { width: 100%; height: 100%; display: block; }
+
+  .name {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: 4px;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .name-cn {
+    font-size: 18px;
+    color: var(--muted);
+    margin-bottom: 12px;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .affiliation {
+    font-size: 17px;
+    color: var(--text-soft);
+    line-height: 1.4;
+    margin-bottom: 20px;
+  }
+  .homepage-label {
+    font-size: 16px;
+    color: var(--text);
+    margin-bottom: 16px;
+    font-style: italic;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+
+  .info-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 16px;
+  }
+  .info-list li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-soft);
+  }
+  .info-list .icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: var(--text-soft);
+  }
+  .info-list a { color: var(--text-soft); }
+  .info-list a:hover { color: var(--link); }
+
+  .content { min-width: 0; max-width: 820px; }
+
+  section {
+    margin-bottom: 56px;
+    scroll-margin-top: 90px;
+  }
+  section:first-child { margin-top: 0; }
+
+  h2 {
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule);
+    font-family: 'Source Serif 4', Georgia, serif;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h2 .emoji {
+    font-size: 26px;
+    -webkit-font-smoothing: auto;
+  }
+
+  p { margin-bottom: 14px; color: var(--text); }
+  p:last-child { margin-bottom: 0; }
+
+  .news-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .news-list li {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 12px;
+    align-items: start;
+  }
+  .news-date {
+    font-style: italic;
+    color: var(--muted);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 16px;
+    padding-top: 1px;
+  }
+
+  /* Education block */
+  .edu-block {
+    background: var(--code-bg);
+    border-left: 3px solid var(--accent);
+    padding: 16px 20px;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 16px;
+  }
+  .edu-block .school {
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Source Serif 4', Georgia, serif;
+    margin-bottom: 4px;
+  }
+  .edu-block .school-cn {
+    color: var(--muted);
+    font-size: 14px;
+    margin-left: 4px;
+  }
+  .edu-block .program {
+    color: var(--text-soft);
+    margin-bottom: 6px;
+  }
+  .edu-block .meta {
+    font-size: 14px;
+    color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .edu-block .meta .highlight {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* Skill tags */
+  .skill-section { margin-top: 16px; }
+  .skill-section h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text);
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .skill-tags span {
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 3px 9px;
+    background: var(--code-bg);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    color: var(--text-soft);
+  }
+  .skill-tags span.primary {
+    background: #ffeaea;
+    color: var(--accent);
+    border-color: #ffd0d0;
+  }
+
+  /* Publications */
+  .pub {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 24px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: start;
+  }
+  .pub:last-child { border-bottom: none; }
+  .pub.featured {
+    background: linear-gradient(to right, #fff7e6 0%, transparent 60%);
+    margin: 0 -16px;
+    padding: 24px 16px;
+    border-radius: 8px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .pub-thumb {
+    aspect-ratio: 4/3;
+    background: var(--code-bg);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .pub-thumb svg { width: 100%; height: 100%; }
+
+  .pub-venue {
+    display: inline-block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    margin-right: 6px;
+    letter-spacing: 0.02em;
+  }
+  .pub-venue.preprint { color: var(--accent); background: #ffeaea; }
+  .pub-venue.review { color: #9a6700; background: #fff8c5; }
+  .pub-venue.coauthor { color: #1a7f37; background: #dafbe1; }
+  .pub-venue.preparing { color: #6e40c9; background: #f0e7ff; }
+
+  .pub-title {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.35;
+    margin-bottom: 6px;
+    color: var(--text);
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .pub-title a { color: var(--text); }
+  .pub-title a:hover { color: var(--link); text-decoration: none; }
+
+  .pub-authors {
+    font-size: 15px;
+    color: var(--text-soft);
+    margin-bottom: 6px;
+    line-height: 1.5;
+  }
+  .pub-authors .me {
+    font-weight: 600;
+    color: var(--text);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
+  .pub-authors .equal::after {
+    content: '†';
+    color: var(--accent);
+    font-size: 12px;
+    vertical-align: super;
+    margin-left: 1px;
+  }
+  .pub-authors .lead::after {
+    content: '★';
+    color: var(--accent);
+    font-size: 11px;
+    vertical-align: super;
+    margin-left: 1px;
+  }
+
+  .pub-meta {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 8px;
+    font-style: italic;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+
+  .pub-tldr {
+    font-size: 15px;
+    color: var(--text-soft);
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+
+  .pub-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .pub-links a {
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 3px 10px;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    color: var(--text-soft);
+    background: #fff;
+    transition: all 0.15s;
+  }
+  .pub-links a:hover {
+    background: var(--text);
+    color: #fff;
+    border-color: var(--text);
+    text-decoration: none;
+  }
+  .pub-links span.disabled {
+    font-size: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 3px 10px;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    color: var(--muted);
+    background: #fff;
+    cursor: not-allowed;
+  }
+
+  .content p a {
+    color: var(--link);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+  }
+  .email-link { color: var(--link); text-decoration: underline; }
+
+  /* Honors / Competition list */
+  .award-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+  }
+  .award-list li {
+    display: grid;
+    grid-template-columns: 80px 1fr 80px;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .award-list li:last-child { border-bottom: none; }
+  .award-list .year {
+    font-style: italic;
+    color: var(--muted);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 16px;
+  }
+  .award-list .name {
+    font-size: 16px;
+    color: var(--text);
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 400;
+    margin-bottom: 0;
+  }
+  .award-list .badge {
+    font-size: 11px;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-align: center;
+    white-space: nowrap;
+  }
+  .badge.bronze { background: #fef3e6; color: #b45309; border: 1px solid #fdba74; }
+  .badge.national { background: #ffeaea; color: var(--accent); border: 1px solid #ffd0d0; }
+  .badge.provincial { background: #dafbe1; color: #1a7f37; border: 1px solid #b4e7c7; }
+  .badge.school { background: #ddf4ff; color: #0969da; border: 1px solid #b6e3ff; }
+
+  /* Competition card */
+  .comp-card {
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 20px 24px;
+    background: var(--code-bg);
+  }
+  .comp-card .comp-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .comp-card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Source Serif 4', Georgia, serif;
+    line-height: 1.3;
+  }
+  .comp-card .comp-rank {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .comp-card .comp-meta {
+    font-size: 14px;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 10px;
+    font-family: 'Source Serif 4', Georgia, serif;
+  }
+  .comp-card p {
+    font-size: 15px;
+    color: var(--text-soft);
+    line-height: 1.55;
+  }
+
+  /* Coursework grid */
+  .courses {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 6px 12px;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  .courses div {
+    color: var(--text-soft);
+    padding: 3px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dotted var(--rule);
+  }
+  .courses .score { color: var(--accent); font-weight: 500; }
+  .courses .score.perfect { color: #1a7f37; font-weight: 600; }
+
+  @media (max-width: 900px) {
+    .layout {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      padding: 24px 20px 60px;
+    }
+    .sidebar {
+      position: static;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .avatar { width: 200px; height: 200px; }
+    .info-list li { justify-content: center; }
+    .nav-inner { padding: 0 20px; gap: 22px; }
+    .nav-inner a { font-size: 15px; }
+    .pub { grid-template-columns: 1fr; }
+    .pub-thumb { max-width: 280px; }
+    .pub.featured { margin: 0; }
+    .news-list li { grid-template-columns: 80px 1fr; gap: 8px; }
+    .award-list li { grid-template-columns: 60px 1fr 70px; gap: 10px; }
+    h2 { font-size: 24px; }
+    .name { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="active">Homepage</a>
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#research-topics">Research</a>
+    <a href="#news">News</a>
+    <a href="#publications">Publications</a>
+    <a href="#competitions">Competitions</a>
+    <a href="#honors">Honors</a>
+  </div>
+</nav>
+
+<div class="layout">
+
+  <aside class="sidebar">
+    <div class="avatar">
+      <img src="avatar.jpg" alt="Haotong Xie" style="width:100%; height:100%; object-fit:cover; display:block;">
+    </div>
+
+    <h1 class="name">Haotong Xie</h1>
+    <div class="name-cn">谢昊彤</div>
+    <div class="affiliation">
+      Shanghai University of<br>
+      Finance and Economics<br>
+      <span style="color:var(--muted); font-size:14px;">Undergraduate, Class of 2027</span>
+    </div>
+    <div class="homepage-label">Haotong's Homepage</div>
+
+    <ul class="info-list">
+      <li>
+        <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a5 5 0 0 0-5 5c0 4.5 5 11 5 11s5-6.5 5-11a5 5 0 0 0-5-5zm0 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>
+        Shanghai, China
+      </li>
+      <li>
+        <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a5 5 0 0 0-5 5c0 4.5 5 11 5 11s5-6.5 5-11a5 5 0 0 0-5-5zm0 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/></svg>
+        SUFE
+      </li>
+      <li>
+        <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M2 3h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1zm6 5.5L14 5H2l6 3.5z"/></svg>
+        <a href="mailto:haotongxieqaq@163.com">haotongxieqaq@163.com</a>
+      </li>
+      <li>
+        <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M2 0h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2zm6 4.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z"/></svg>
+        WeChat: xiehao123456tong
+      </li>
+      <li>
+        <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M3 0h10a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H3a3 3 0 0 1-3-3V3a3 3 0 0 1 3-3zm5 11.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/></svg>
+        Tel: 18558718333
+      </li>
+      <li>
+        <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2 .37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+        <a href="#">Github</a>
+      </li>
+      <li>
+        <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0L0 4l8 4 8-4-8-4zM0 8l8 4 8-4M0 12l8 4 8-4"/></svg>
+        <a href="#">Google Scholar</a>
+      </li>
+      <li>
+        <svg class="icon" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2h12v2H2zM2 6h12v2H2zM2 10h12v2H2z"/></svg>
+        <a href="#">CV</a>
+      </li>
+    </ul>
+  </aside>
+
+  <main class="content">
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        Hello! I am Haotong Xie (谢昊彤), an undergraduate student at
+        <strong>Shanghai University of Finance and Economics (SUFE)</strong>,
+        majoring in <strong>Data Science and Big Data</strong>. I currently rank
+        <strong>1st out of 167</strong> in my cohort with a GPA of <strong>92.69/100</strong>.
+      </p>
+      <p>
+        My research lies at the intersection of <strong>multi-agent systems</strong>,
+        <strong>LLM safety alignment</strong>, <strong>reinforcement learning</strong>,
+        and <strong>signal processing</strong>. I am especially interested in how a
+        single learned controller can coordinate heterogeneous models and tools as one
+        coherent, cost-aware system, and in the safety-relevant failure modes — reward
+        hacking, instruction conflict, response drift — that emerge once such systems
+        are scaled.
+      </p>
+      <p>
+        I am seeking <strong>PhD positions for 2027 Fall</strong> and warmly welcome
+        any remote/onsite industrial or research internship. Please feel free to reach
+        out at
+        <a href="mailto:haotongxieqaq@163.com" class="email-link">haotongxieqaq@163.com</a>.
+      </p>
+    </section>
+
+    <section id="education">
+      <h2><span class="emoji">🎓</span>Education</h2>
+      <div class="edu-block">
+        <div class="school">
+          Shanghai University of Finance and Economics
+          <span class="school-cn">上海财经大学</span>
+        </div>
+        <div class="program">B.S. in Data Science and Big Data</div>
+        <div class="meta">
+          2023.09 – 2027.06 &nbsp;·&nbsp;
+          GPA: <span class="highlight">92.69 / 100</span> &nbsp;·&nbsp;
+          Rank: <span class="highlight">1 / 167</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="research-topics">
+      <h2><span class="emoji">🔍</span>Research Interests</h2>
+      <p>
+        I work across four lines that share one underlying question — <em>how can we
+        make complex AI systems behave reliably under realistic constraints?</em>
+      </p>
+      <p>
+        <strong>Multi-Agent Systems &amp; Agent Routing.</strong> I co-led
+        <a href="#uno-orchestra"><strong>Uno-Orchestra</strong></a>, which collapses
+        task decomposition and per-subtask routing into a single end-to-end RL-trained
+        policy that abstains from decomposing when a query is simple, and dispatches
+        parallel subtasks under an explicit cost budget when it is not.
+      </p>
+      <p>
+        <strong>LLM Safety Alignment.</strong> In <a href="#elcd"><strong>ELCD</strong></a>
+        we treat the instruction-conflict problem from an energy-based perspective,
+        building a lightweight monitor that catches "response drift" inside the
+        latent space rather than from surface prompt features. In
+        <a href="#hackbox"><strong>HackBox</strong></a> I co-design a controlled
+        sandbox that reliably reproduces RLVR coding-reward hacking on lab-scale
+        open-source models — three attack surfaces (judge / data / runtime), four
+        difficulty levels (D1–D4), and a detection benchmark.
+      </p>
+      <p>
+        <strong>Signal Processing &amp; Function-Space Learning.</strong> In my first
+        first-author paper <a href="#fdl"><strong>Adaptive Function Dictionary
+        Learning</strong></a>, I parameterise dictionary atoms as physically meaningful
+        functions rather than abstract vectors, unifying adaptivity and interpretability
+        for non-stationary signal decomposition.
+      </p>
+    </section>
+
+    <section id="news">
+      <h2><span class="emoji">🔥</span>News</h2>
+      <ul class="news-list">
+        <li>
+          <span class="news-date">2026.05</span>
+          <span>🎉 Our paper <em>Uno-Orchestra: Parsimonious Agent Routing via Selective Delegation</em> is now on arXiv. Co-first author with Zhiqing Cui — we reach <strong>77.0% macro pass@1</strong> across 13 benchmarks at <strong>~10× lower cost</strong> than the strongest workflow baseline.</span>
+        </li>
+        <li>
+          <span class="news-date">2026.04</span>
+          <span>📝 Our paper <em>ELCD</em> on energy-based latent conflict detection passed the first-round review at <strong>IJCAI 2026</strong>.</span>
+        </li>
+        <li>
+          <span class="news-date">2025.12</span>
+          <span>🛠️ Started <em>HackBox</em> — a controllable sandbox for reproducing coding-reward hacking in RLVR post-training. Targeting <strong>EMNLP 2026</strong>.</span>
+        </li>
+        <li>
+          <span class="news-date">2025.11</span>
+          <span>🥉 Won a <strong>bronze medal</strong> at <strong>ARC Prize 2025</strong> (rank 118 / 1456 teams worldwide) as team captain.</span>
+        </li>
+        <li>
+          <span class="news-date">2025.10</span>
+          <span>🏆 Awarded the <strong>National Scholarship</strong> (¥10,000) and the <strong>SUFE People's Scholarship — Special Grade</strong>.</span>
+        </li>
+      </ul>
+    </section>
+
+    <section id="publications">
+      <h2><span class="emoji">📚</span>Publications</h2>
+      <p style="font-size: 14px; color: var(--muted); margin-bottom: 18px;">
+        <span style="color: var(--accent);">★</span> project lead &nbsp;·&nbsp;
+        <span style="color: var(--accent);">†</span> equal contribution
+      </p>
+
+      <!-- Uno-Orchestra (featured) -->
+      <div class="pub featured" id="uno-orchestra">
+        <div class="pub-thumb">
+          <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="150" fill="#fff7e6"/>
+            <rect x="8" y="65" width="28" height="20" rx="3" fill="#fff" stroke="#1f2328" stroke-width="1.2"/>
+            <text x="22" y="78" text-anchor="middle" font-family="Source Sans 3" font-size="9" fill="#1f2328">Q</text>
+            <line x1="36" y1="75" x2="50" y2="75" stroke="#1f2328" stroke-width="1.2"/>
+            <polygon points="50,72 56,75 50,78" fill="#1f2328"/>
+            <rect x="56" y="60" width="42" height="30" rx="4" fill="#cf222e" stroke="#1f2328" stroke-width="1.2"/>
+            <text x="77" y="78" text-anchor="middle" font-family="Source Sans 3" font-size="8" font-weight="600" fill="#fff">UNO</text>
+            <line x1="98" y1="72" x2="118" y2="40" stroke="#1f2328" stroke-width="1.2"/>
+            <line x1="98" y1="75" x2="118" y2="75" stroke="#1f2328" stroke-width="1.2"/>
+            <line x1="98" y1="78" x2="118" y2="110" stroke="#1f2328" stroke-width="1.2"/>
+            <circle cx="128" cy="40" r="10" fill="#0969da" opacity="0.85"/>
+            <text x="128" y="44" text-anchor="middle" font-family="Source Sans 3" font-size="8" fill="#fff">M₁</text>
+            <circle cx="128" cy="75" r="10" fill="#1a7f37" opacity="0.85"/>
+            <text x="128" y="79" text-anchor="middle" font-family="Source Sans 3" font-size="8" fill="#fff">M₂</text>
+            <circle cx="128" cy="110" r="10" fill="#6e40c9" opacity="0.85"/>
+            <text x="128" y="114" text-anchor="middle" font-family="Source Sans 3" font-size="8" fill="#fff">M₃</text>
+            <line x1="138" y1="40" x2="158" y2="72" stroke="#1f2328" stroke-width="1.2"/>
+            <line x1="138" y1="75" x2="158" y2="75" stroke="#1f2328" stroke-width="1.2"/>
+            <line x1="138" y1="110" x2="158" y2="78" stroke="#1f2328" stroke-width="1.2"/>
+            <rect x="160" y="65" width="32" height="20" rx="3" fill="#cf222e"/>
+            <text x="176" y="78" text-anchor="middle" font-family="Source Sans 3" font-size="9" font-weight="600" fill="#fff">A✓</text>
+            <text x="100" y="135" text-anchor="middle" font-family="Source Serif 4, serif" font-size="9" font-style="italic" fill="#6e7781">Selective Delegation</text>
+          </svg>
+        </div>
+        <div>
+          <span class="pub-venue preprint">arXiv 2026 · Preprint</span>
+          <span class="pub-venue coauthor">Co-first author</span>
+          <h3 class="pub-title">
+            <a href="https://arxiv.org/abs/2605.05007">Uno-Orchestra: Parsimonious Agent Routing via Selective Delegation</a>
+          </h3>
+          <p class="pub-authors">
+            <span class="lead">Zhiqing Cui</span>,
+            <span class="me equal">Haotong Xie</span>,
+            Jiahao Yuan, Cheng Yang, Hanqing Wang, Yuxin Wu, Yifan Wu,
+            Siru Zhong, Tao Yu, Yifu Guo, Siyu Zhang, Xinlei Yu, Qibing Ren, Usman Naseem
+          </p>
+          <p class="pub-meta">arXiv:2605.05007 · May 2026</p>
+          <p class="pub-tldr">
+            A unified orchestration policy that <strong>jointly</strong> learns task
+            decomposition and per-subtask (model, primitive) routing from a single
+            causal-LM, trained with verifier-gated SFT followed by <strong>Agentic-GRPO</strong>
+            — a multi-turn extension of GRPO with turn-level credit assignment. Reaches
+            <strong>77.0% macro pass@1</strong> on a 13-benchmark suite, <strong>~16% above</strong>
+            the strongest workflow baseline at roughly <strong>an order of magnitude lower
+            per-query cost</strong>.
+          </p>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2605.05007">arXiv</a>
+            <a href="https://arxiv.org/pdf/2605.05007">PDF</a>
+            <a href="https://github.com/CuiZHIQ/Uno-Orchestra">Code</a>
+            <a href="https://huggingface.co/datasets/tinaxie/Uno-Curriculum">Dataset</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ELCD -->
+      <div class="pub" id="elcd">
+        <div class="pub-thumb">
+          <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="150" fill="#f6f8fa"/>
+            <!-- Energy landscape -->
+            <defs>
+              <linearGradient id="energy" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#cf222e" stop-opacity="0.8"/>
+                <stop offset="100%" stop-color="#0969da" stop-opacity="0.4"/>
+              </linearGradient>
+            </defs>
+            <path d="M 20 110 Q 40 95 60 105 Q 80 80 100 90 Q 120 50 140 45 Q 160 30 180 25 L 180 130 L 20 130 Z"
+                  fill="url(#energy)" opacity="0.6"/>
+            <path d="M 20 110 Q 40 95 60 105 Q 80 80 100 90 Q 120 50 140 45 Q 160 30 180 25"
+                  fill="none" stroke="#1f2328" stroke-width="1.5"/>
+            <!-- safe basin -->
+            <circle cx="60" cy="105" r="5" fill="#1a7f37"/>
+            <text x="60" y="123" text-anchor="middle" font-family="Source Sans 3" font-size="8" fill="#1a7f37">safe</text>
+            <!-- drifted: high energy -->
+            <circle cx="160" cy="30" r="5" fill="#cf222e"/>
+            <text x="160" y="20" text-anchor="middle" font-family="Source Sans 3" font-size="8" fill="#cf222e">drift</text>
+            <!-- y-axis: Energy -->
+            <line x1="15" y1="20" x2="15" y2="130" stroke="#1f2328" stroke-width="1"/>
+            <text x="10" y="22" text-anchor="end" font-family="JetBrains Mono" font-size="8" fill="#6e7781">E</text>
+            <text x="100" y="145" text-anchor="middle" font-family="Source Serif 4" font-size="10" font-style="italic" fill="#6e7781">latent space</text>
+          </svg>
+        </div>
+        <div>
+          <span class="pub-venue review">IJCAI 2026 · Under Review</span>
+          <span class="pub-venue coauthor">Third author</span>
+          <h3 class="pub-title">ELCD: Energy-Driven Latent Conflict Detection for LLM Instruction Hierarchies</h3>
+          <p class="pub-authors">[Author 1], [Author 2], <span class="me">Haotong Xie</span> et al.</p>
+          <p class="pub-meta">IJCAI 2026 · Passed first-round review</p>
+          <p class="pub-tldr">
+            We frame instruction-hierarchy conflict in LLMs through an
+            <strong>energy-based model</strong> lens. ELCD extracts a composite feature
+            (last-token instantaneous representation + global mean-pooled response) and
+            projects it to a scalar energy score; a <strong>pairwise margin ranking
+            loss</strong> then forces compliant responses into low-energy basins and
+            drifted ones into high-energy plateaus. The result is a lightweight
+            plug-in monitor that catches "response drift" inside the latent space —
+            without adding inference latency to the host LLM.
+          </p>
+          <div class="pub-links">
+            <span class="disabled">PDF (under review)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- HackBox -->
+      <div class="pub" id="hackbox">
+        <div class="pub-thumb">
+          <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="150" fill="#f6f8fa"/>
+            <!-- Three attack surfaces -->
+            <g font-family="JetBrains Mono" font-size="9" fill="#1f2328">
+              <rect x="20" y="30" width="50" height="24" rx="3" fill="#ffeaea" stroke="#cf222e" stroke-width="1"/>
+              <text x="45" y="46" text-anchor="middle">judge</text>
+              <rect x="75" y="30" width="50" height="24" rx="3" fill="#fff8c5" stroke="#9a6700" stroke-width="1"/>
+              <text x="100" y="46" text-anchor="middle">data</text>
+              <rect x="130" y="30" width="50" height="24" rx="3" fill="#f0e7ff" stroke="#6e40c9" stroke-width="1"/>
+              <text x="155" y="46" text-anchor="middle">runtime</text>
+            </g>
+            <!-- D1-D4 levels -->
+            <g font-family="JetBrains Mono" font-size="9" fill="#fff">
+              <rect x="30" y="75" width="30" height="18" rx="2" fill="#1a7f37"/>
+              <text x="45" y="87" text-anchor="middle">D1</text>
+              <rect x="65" y="75" width="30" height="18" rx="2" fill="#9a6700"/>
+              <text x="80" y="87" text-anchor="middle">D2</text>
+              <rect x="100" y="75" width="30" height="18" rx="2" fill="#cf222e"/>
+              <text x="115" y="87" text-anchor="middle">D3</text>
+              <rect x="135" y="75" width="30" height="18" rx="2" fill="#3d3a36"/>
+              <text x="150" y="87" text-anchor="middle">D4</text>
+            </g>
+            <text x="100" y="115" text-anchor="middle" font-family="Source Serif 4" font-size="10" font-style="italic" fill="#1f2328">3 attack surfaces × 4 difficulty levels</text>
+            <text x="100" y="135" text-anchor="middle" font-family="Source Serif 4" font-size="10" font-style="italic" fill="#6e7781">RLVR coding reward hacking</text>
+          </svg>
+        </div>
+        <div>
+          <span class="pub-venue preparing">Targeting EMNLP 2026</span>
+          <span class="pub-venue coauthor">Second author</span>
+          <h3 class="pub-title">HackBox: A Controllable Sandbox for Reproducing RLVR Coding Reward Hacking</h3>
+          <p class="pub-authors">[Author 1], <span class="me">Haotong Xie</span> et al.</p>
+          <p class="pub-meta">In preparation · Detection benchmark stage</p>
+          <p class="pub-tldr">
+            A research framework for studying coding-reward hacking in RLVR
+            post-training, on <strong>lab-scale open-source models</strong>. We
+            systematise the attack space into three surfaces (<em>judge</em> /
+            <em>data</em> / <em>runtime</em>) and four difficulty levels (D1–D4),
+            build a toxic-SFT data synthesis pipeline with three concealment modes
+            (direct / mid-solve hack / fake-solve hack), and release a
+            <strong>detection benchmark</strong> grounded in real RL rollouts to
+            evaluate mainstream LLM monitors.
+          </p>
+          <div class="pub-links">
+            <span class="disabled">PDF (in preparation)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- FDL -->
+      <div class="pub" id="fdl">
+        <div class="pub-thumb">
+          <svg viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="150" fill="#f6f8fa"/>
+            <!-- Smooth + spike decomposition -->
+            <line x1="20" y1="80" x2="180" y2="80" stroke="#e6e8eb" stroke-width="1"/>
+            <!-- Smooth wave -->
+            <path d="M 20 80 Q 50 50 80 80 T 140 80 T 180 80" fill="none" stroke="#0969da" stroke-width="1.8"/>
+            <!-- Spikes -->
+            <line x1="65" y1="80" x2="65" y2="35" stroke="#cf222e" stroke-width="1.5"/>
+            <polygon points="60,38 65,30 70,38" fill="#cf222e"/>
+            <line x1="115" y1="80" x2="115" y2="48" stroke="#cf222e" stroke-width="1.5"/>
+            <polygon points="110,51 115,43 120,51" fill="#cf222e"/>
+            <line x1="155" y1="80" x2="155" y2="55" stroke="#cf222e" stroke-width="1.5"/>
+            <polygon points="150,58 155,50 160,58" fill="#cf222e"/>
+            <!-- Legend -->
+            <line x1="30" y1="115" x2="50" y2="115" stroke="#0969da" stroke-width="1.8"/>
+            <text x="55" y="118" font-family="Source Sans 3" font-size="9" fill="#0969da">smooth</text>
+            <line x1="105" y1="115" x2="105" y2="108" stroke="#cf222e" stroke-width="1.5"/>
+            <text x="115" y="118" font-family="Source Sans 3" font-size="9" fill="#cf222e">spike</text>
+            <text x="100" y="138" text-anchor="middle" font-family="Source Serif 4" font-size="10" font-style="italic" fill="#6e7781">Adaptive Function Dictionary</text>
+          </svg>
+        </div>
+        <div>
+          <span class="pub-venue preparing">Resubmission in Preparation</span>
+          <span class="pub-venue coauthor">First author</span>
+          <h3 class="pub-title">Beyond Static Bases: Adaptive Function Dictionary Learning for Signal Decomposition</h3>
+          <p class="pub-authors"><span class="me">Haotong Xie</span> et al.</p>
+          <p class="pub-meta">Previously submitted to ICASSP 2026 (review scores: 20/20/21 out of 28) · Currently extending and resubmitting</p>
+          <p class="pub-tldr">
+            We introduce <strong>Adaptive Function Dictionary Learning</strong>, which
+            parameterises dictionary atoms as physically meaningful functions rather
+            than abstract vectors — unifying adaptivity with interpretability for
+            non-stationary signal decomposition. The framework consists of a
+            <strong>hierarchical function dictionary</strong> (smooth sub-dictionary
+            for low-frequency trends, spike sub-dictionary for transients), a
+            <strong>signal-segmentation router</strong>, an
+            <strong>attention modulator</strong> with per-region basis-selection
+            networks, and a sparse training objective that enforces minimal-atom
+            decomposition.
+          </p>
+          <div class="pub-links">
+            <span class="disabled">PDF (extended version in preparation)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="competitions">
+      <h2><span class="emoji">🏅</span>Competition Highlight</h2>
+      <div class="comp-card">
+        <div class="comp-header">
+          <h3>Few-Shot Visual Logic Solver via Masked Diffusion &amp; Adaptive Reasoning</h3>
+          <div class="comp-rank">🥉 Bronze · #118 / 1456</div>
+        </div>
+        <div class="comp-meta">ARC Prize 2025 · Team Captain · 2025</div>
+        <p>
+          Built a <strong>verifier-guided masked-diffusion solver</strong> for the
+          Abstraction and Reasoning Corpus (ARC). Key contributions: (i) a
+          <strong>dynamic curriculum</strong> based on logical-atom complexity and
+          masking ratio, progressing from monochrome fills to compositional rule
+          transformations; (ii) a non-autoregressive masked-diffusion language model
+          with <strong>2D positional priors</strong> for symmetry and connectivity
+          reasoning; (iii) an energy-based <strong>cross-example consistency
+          verifier</strong> that guides denoising trajectories at inference time
+          without weight updates. Ranked <strong>118th out of 1456 teams worldwide</strong>,
+          earning a bronze medal.
+        </p>
+      </div>
+    </section>
+
+    <section id="honors">
+      <h2><span class="emoji">🏆</span>Honors and Awards</h2>
+      <ul class="award-list">
+        <li>
+          <span class="year">2025</span>
+          <span class="name">Bronze Medal · ARC Prize 2025 (Global, 118 / 1456 teams)</span>
+          <span class="badge bronze">International</span>
+        </li>
+        <li>
+          <span class="year">2025</span>
+          <span class="name">National Second Prize · Chinese Mathematics Competition (CMC)</span>
+          <span class="badge national">National</span>
+        </li>
+        <li>
+          <span class="year">2025</span>
+          <span class="name">Shanghai Second Prize · China Undergraduate Mathematical Contest in Modeling</span>
+          <span class="badge provincial">Provincial</span>
+        </li>
+        <li>
+          <span class="year">2024</span>
+          <span class="name">Shanghai Second Prize · China Undergraduate Mathematical Contest in Modeling</span>
+          <span class="badge provincial">Provincial</span>
+        </li>
+        <li>
+          <span class="year">2025</span>
+          <span class="name">Shanghai Second Prize · "Zhengda Cup" Market Research Analysis Contest</span>
+          <span class="badge provincial">Provincial</span>
+        </li>
+        <li>
+          <span class="year">2025</span>
+          <span class="name">Shanghai Third Prize · National Statistical Modeling Contest</span>
+          <span class="badge provincial">Provincial</span>
+        </li>
+        <li>
+          <span class="year">2025</span>
+          <span class="name">National Scholarship · Ministry of Education of China (¥10,000)</span>
+          <span class="badge national">National</span>
+        </li>
+        <li>
+          <span class="year">2025</span>
+          <span class="name">SUFE People's Scholarship · Special Grade</span>
+          <span class="badge school">School</span>
+        </li>
+        <li>
+          <span class="year">2024–25</span>
+          <span class="name">SUFE Merit Student (two consecutive years)</span>
+          <span class="badge school">School</span>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+</div>
+
+<script>
+  const sections = document.querySelectorAll('main section');
+  const navLinks = document.querySelectorAll('nav a');
+
+  function updateActive() {
+    let current = '';
+    const scrollY = window.scrollY + 120;
+    sections.forEach(s => {
+      if (s.offsetTop <= scrollY) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.remove('active');
+      const href = a.getAttribute('href');
+      if (href === '#' && (!current || current === 'about')) a.classList.add('active');
+      else if (href === '#research-topics' && current === 'research-topics') a.classList.add('active');
+      else if (href === '#' + current) a.classList.add('active');
+    });
+  }
+
+  window.addEventListener('scroll', updateActive);
+  updateActive();
+</script>
+
+</body>
+</html>
